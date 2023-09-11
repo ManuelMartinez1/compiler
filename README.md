@@ -1,5 +1,8 @@
 # compiler
 
+Descripcion del proyecto: 
+
+Compilador
 Definicion de lenguaje: 
 
 - Secuenciales
