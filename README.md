@@ -20,3 +20,6 @@ Definicion de lenguaje:
 
 + Constantes punto flotante | parteEntera.ParteDecimal | 5 caracteres de cada lado y solo numeros
 + declaracion de variables 
+Operaciones aritmeticas 
+Lectura 
+Escritura
