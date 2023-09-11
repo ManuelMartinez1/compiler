@@ -19,3 +19,4 @@ Definicion de lenguaje:
     * Letras, Numeros, guion bajo, iniciando con letra case sensitive mayusculas y minusculas, limite 32 max
 
 + Constantes punto flotante | parteEntera.ParteDecimal | 5 caracteres de cada lado y solo numeros
++ declaracion de variables 
