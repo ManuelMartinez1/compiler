@@ -21,8 +21,13 @@
 
 "("          printf("OPEN PARENTHESIS\n");// OPERADORES
 ")"          printf("CLOSE PARENTHESIS\n");
-.           printf("OPERATOR: %c\n", yytext[0]);    
-
+"+"             printf("PLUS OPERATOR\n");
+"-"             printf("MINUS OPERATOR\n");
+"*"             printf("MULTIPLY OPERATOR\n");
+"/"             printf("DIVIDE OPERATOR\n");
+"="             printf("EQUALS OPERATOR\n");
+"%"             printf("MODULO OPERATOR\n");
+"!"             printf("NOT OPERATOR\n");
 
 
 [a-zA-Z_][a-zA-Z0-9_]*  {
