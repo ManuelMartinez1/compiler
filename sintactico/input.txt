@@ -1,0 +1,14 @@
+inicio
+    int x;
+    float y;
+    x = 10;
+    y = 3.14;
+    if (x >= 5) {
+        y = y + 1.0;
+    } else {
+        y = y - 1.0;
+    }
+    while (x > 0) {
+        x = x - 1;
+    }
+fin
