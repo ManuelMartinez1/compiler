@@ -1,12 +1,13 @@
 %{
 #include <stdio.h>
+int line_number = 1;
 %}
 
 %%
 
 
 "fin"        printf("1\n");
-"inicio"     printf("2\n");
+"inicio:"    printf("2\n");
 "if"         printf("3\n"); // PALABRAS RESERVADAS
 "else"       printf("4\n");
 "while"      printf("5\n");
@@ -29,33 +30,49 @@
 "%"             printf("22\n");
 "!"             printf("23\n");
 ";"             printf("24\n");
-
+">"             printf("25\n");
+"<"             printf("26\n");
+[\n\r]+      { line_number++; } // Actualizar el contador de líneas al encontrar saltos de línea o retorno de carro
 
 [a-zA-Z_][a-zA-Z0-9_]*  {
-    if(strlen(yytext)>32){
-         printf("ERROR: var too long: %s\n", yytext);
+    if (strlen(yytext) > 32) {
+        printf("ERROR (linea %d): var too long: %s\n", line_number, yytext);
         exit(1);
-    }
-    else{
-         printf("25: %s\n", yytext);
+    } else {
+        printf("27: %s\n", yytext);
     }
 }
 
 
-[0-9]{1,5}\.[0-9]{1,5} printf("25: %s\n", yytext);// delimitacion de asignacion de valores para numeros
+[0-9]{1,5}\.[0-9]{1,5} printf("28: %s\n", yytext);// delimitacion de asignacion de valores para numeros
 [0-9]+       {
     if(strlen(yytext)>5){
         printf("ERROR: INT too long: %s\n", yytext);
         exit(1);
     }else{
-         printf("26: %s\n", yytext);
+         printf("28: %s\n", yytext);
     }
 
 }
-[ \t\n]      ; // Skip whitespace        
+[ \t]        ;  
 %%
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s filename\n", argv[0]);
+        return 1;
+    }
 
-int main() {
+    FILE *inputFile = fopen(argv[1], "r");
+    if (inputFile == NULL) {
+        perror("Error opening file");
+        return 1;
+    }
+
+    yyin = inputFile; 
+
     yylex();
+
+    fclose(inputFile);
+
     return 0;
 }

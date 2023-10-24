@@ -1,7 +1,7 @@
 inicio:
-var a;
-var n;
-a = 1+1;
-a = 5.666;
-if (a < n);
+    var a;
+    var n;
+    a = 1+1;
+    a = 55.666;
+    if (a < n);
 fin
