@@ -362,12 +362,12 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[74] =
     {   0,
-        0,    0,   34,   32,   31,   31,   32,   13,   14,    4,
-        2,    3,    5,   30,   17,   32,    9,   32,   29,   12,
-       29,   29,   29,   29,   29,   29,   29,   15,   32,   16,
-       10,   30,    7,    8,    6,   29,   29,   28,   29,   29,
-       29,   29,   19,   29,   29,   29,   11,   29,   29,   29,
-       18,   29,   27,   29,   21,   29,   29,   24,   29,   20,
+        0,    0,   34,   32,   31,   31,   32,   14,   15,    5,
+        3,    4,    6,   30,   18,   32,   10,   32,   29,   13,
+       29,   29,   29,   29,   29,   29,   29,   16,   32,   17,
+       11,   30,    8,    9,    7,   29,   29,   28,   29,   29,
+       29,   29,   19,   29,   29,   29,   12,   29,   29,   29,
+        2,   29,   27,   29,   21,   29,   29,   24,   29,   20,
        29,   29,   29,   29,   29,   22,   29,   29,   26,   23,
         1,   25,    0
     } ;
@@ -486,7 +486,6 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "parser.l"
 #line 2 "parser.l"
-// Incluye los encabezados y declaraciones de los tokens definidos en parser.y
 #include "parser.tab.h"
 #include <string.h>
 #include <stdio.h>
@@ -495,6 +494,7 @@ void yyerror(char *str);
 
 extern int yylex(void);
 extern FILE* yyin;
+extern FILE *output_file;
 #line 499 "lex.yy.c"
 #line 500 "lex.yy.c"
 
@@ -715,7 +715,8 @@ YY_DECL
 	{
 #line 12 "parser.l"
 
-#line 719 "lex.yy.c"
+
+#line 720 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -774,171 +775,171 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 13 "parser.l"
-{ return(INICIO); }
+#line 14 "parser.l"
+{ fprintf(output_file,"Token: INICIO, Valor: %s\n", yytext); return(INICIO); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 14 "parser.l"
-{ return(ADD); }
+#line 15 "parser.l"
+{ fprintf(output_file,"Token: FIN, Valor: %s\n", yytext); return(FIN); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 15 "parser.l"
-{ return(SUB); }
+#line 16 "parser.l"
+{ fprintf(output_file,"Token: ADD, Valor: %s\n", yytext); return(ADD); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 16 "parser.l"
-{ return(MUL); }
+#line 17 "parser.l"
+{ fprintf(output_file,"Token: SUB, Valor: %s\n", yytext); return(SUB); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 17 "parser.l"
-{ return(DIV); }
+#line 18 "parser.l"
+{ fprintf(output_file,"Token: MUL, Valor: %s\n", yytext); return(MUL); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 18 "parser.l"
-{ return(GE); }
+#line 19 "parser.l"
+{ fprintf(output_file,"Token: DIV, Valor: %s\n", yytext); return(DIV); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 19 "parser.l"
-{ return(LE); }
+#line 20 "parser.l"
+{ fprintf(output_file,"Token: GE, Valor: %s\n", yytext); return(GE); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 20 "parser.l"
-{ return(EQ); }
+#line 21 "parser.l"
+{ fprintf(output_file,"Token: LE, Valor: %s\n", yytext); return(LE); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 21 "parser.l"
-{ return(ASSIGN); }
+#line 22 "parser.l"
+{ fprintf(output_file,"Token: EQ, Valor: %s\n", yytext); return(EQ); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 22 "parser.l"
-{ return(AND); }
+#line 23 "parser.l"
+{ fprintf(output_file,"Token: ASSIGN, Valor: %s\n", yytext); return(ASSIGN); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 23 "parser.l"
-{ return(OR); }
+#line 24 "parser.l"
+{ fprintf(output_file,"Token: AND, Valor: %s\n", yytext); return(AND); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 24 "parser.l"
-{ return(XOR); }
+#line 25 "parser.l"
+{ fprintf(output_file,"Token: OR, Valor: %s\n", yytext); return(OR); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 25 "parser.l"
-{ return(OP); }
+#line 26 "parser.l"
+{ fprintf(output_file,"Token: XOR, Valor: %s\n", yytext); return(XOR); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 26 "parser.l"
-{ return(CP); }
+#line 27 "parser.l"
+{ fprintf(output_file,"Token: OP, Valor: %s\n", yytext); return(OP); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 27 "parser.l"
-{ return(OB); }
+#line 28 "parser.l"
+{ fprintf(output_file,"Token: CP, Valor: %s\n", yytext); return(CP); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 28 "parser.l"
-{ return(CB); }
+#line 29 "parser.l"
+{ fprintf(output_file,"Token: OB, Valor: %s\n", yytext); return(OB); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 29 "parser.l"
-{ return(SEMICOLON); }
+#line 30 "parser.l"
+{ fprintf(output_file,"Token: CB, Valor: %s\n", yytext); return(CB); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 30 "parser.l"
-{ return (FIN); }
+#line 31 "parser.l"
+{ fprintf(output_file,"Token: SEMICOLON, Valor: %s\n", yytext); return(SEMICOLON); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 31 "parser.l"
-{ return(IF); }
+#line 32 "parser.l"
+{ fprintf(output_file,"Token: IF, Valor: %s\n", yytext); return(IF); }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 32 "parser.l"
-{ return(ELSE); }
+#line 33 "parser.l"
+{ fprintf(output_file,"Token: ELSE, Valor: %s\n", yytext); return(ELSE); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 33 "parser.l"
-{ return(INT); }
+#line 34 "parser.l"
+{ fprintf(output_file,"Token: INT, Valor: %s\n", yytext); return(INT); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 34 "parser.l"
-{ return(FLOAT); }
+#line 35 "parser.l"
+{ fprintf(output_file,"Token: FLOAT, Valor: %s\n", yytext); return(FLOAT); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 35 "parser.l"
-{ return(DOUBLE); }
+#line 36 "parser.l"
+{ fprintf(output_file,"Token: DOUBLE, Valor: %s\n", yytext); return(DOUBLE); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 36 "parser.l"
-{ return(BOOL); }
+#line 37 "parser.l"
+{ fprintf(output_file,"Token: BOOL, Valor: %s\n", yytext); return(BOOL); }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 37 "parser.l"
-{ return(STRING); }
+#line 38 "parser.l"
+{ fprintf(output_file,"Token: STRING, Valor: %s\n", yytext); return(STRING); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 38 "parser.l"
-{ return(WHILE); }
+#line 39 "parser.l"
+{ fprintf(output_file,"Token: WHILE, Valor: %s\n", yytext); return(WHILE); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 39 "parser.l"
-{ return(FOR); }
+#line 40 "parser.l"
+{ fprintf(output_file,"Token: FOR, Valor: %s\n", yytext); return(FOR); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 40 "parser.l"
-{ return(DO); }
+#line 41 "parser.l"
+{ fprintf(output_file,"Token: DO, Valor: %s\n", yytext); return(DO); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 41 "parser.l"
-{ return(IDENTIFIER); }
+#line 42 "parser.l"
+{ fprintf(output_file,"Token: IDENTIFIER, Valor: %s\n", yytext); return(IDENTIFIER); }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 42 "parser.l"
-{ return(NUM); }
+#line 43 "parser.l"
+{ fprintf(output_file,"Token: NUM, Valor: %s\n", yytext); return(NUM); }
 	YY_BREAK
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 43 "parser.l"
+#line 44 "parser.l"
 {;} // Ignorar espacios en blanco y saltos de línea
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 44 "parser.l"
+#line 45 "parser.l"
 { ECHO; yyerror("Caracter inválido"); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 45 "parser.l"
+#line 46 "parser.l"
 ECHO;
 	YY_BREAK
-#line 942 "lex.yy.c"
+#line 943 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1943,9 +1944,9 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 45 "parser.l"
+#line 46 "parser.l"
+
 
 int yywrap () {
     return 1;
 }
-

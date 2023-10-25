@@ -4,8 +4,9 @@
     #include <stdlib.h>
     #include <string.h>
     extern int yylineno; 
-
     extern int yylex(void);
+
+    FILE *output_file; 
 
     int yylex(void);
     extern FILE* yyin;
@@ -106,14 +107,20 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    output_file = fopen("output_file.txt", "w");
+    if (!output_file){
+        perror("Error al abrir el archivo de salida");
+        return 1;
+    }
     // Inicia el análisis sintáctico
     yyparse();
 
     // Cierra el archivo de entrada
     fclose(yyin);
+    fclose(output_file);
 
     return 0;
 }
 void yyerror(char *str) {
-    printf("\n");
-    printf("Línea %d : %s\n", yylineno, str);}
+   fprintf(output_file, "\n");
+    fprintf(output_file, "Línea %d : %s\n", yylineno, str);}

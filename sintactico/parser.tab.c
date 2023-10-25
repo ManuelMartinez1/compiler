@@ -105,8 +105,9 @@ Maintained by Magnus Ekdahl <magnus@debian.org>
     #include <stdlib.h>
     #include <string.h>
     extern int yylineno; 
-
     extern int yylex(void);
+
+    FILE *output_file; 
 
     int yylex(void);
     extern FILE* yyin;
@@ -610,10 +611,10 @@ static const short yyrhs[] = {    19,
 
 #if (YY_parse_DEBUG != 0) || defined(YY_parse_ERROR_VERBOSE) 
 static const short yyrline[] = { 0,
-    33,    36,    37,    40,    41,    42,    43,    44,    45,    46,
-    49,    52,    53,    54,    55,    56,    59,    62,    63,    66,
-    67,    68,    69,    72,    75,    78,    81,    82,    83,    84,
-    85,    86,    87,    88,    89,    90
+    34,    37,    38,    41,    42,    43,    44,    45,    46,    47,
+    50,    53,    54,    55,    56,    57,    60,    63,    64,    67,
+    68,    69,    70,    73,    76,    79,    82,    83,    84,    85,
+    86,    87,    88,    89,    90,    91
 };
 
 static const char * const yytname[] = {   "$","error","$illegal.","ADD","SUB",
@@ -1428,7 +1429,7 @@ YYLABEL(yyerrhandle)
 /* END */
 
  #line 1038 "/usr/share/bison++/bison.cc"
-#line 93 "parser.y"
+#line 94 "parser.y"
 
 
 
@@ -1445,14 +1446,20 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    output_file = fopen("output_file.txt", "w");
+    if (!output_file){
+        perror("Error al abrir el archivo de salida");
+        return 1;
+    }
     // Inicia el análisis sintáctico
     yyparse();
 
     // Cierra el archivo de entrada
     fclose(yyin);
+    fclose(output_file);
 
     return 0;
 }
 void yyerror(char *str) {
-    printf("\n");
-    printf("Línea %d : %s\n", yylineno, str);}
+   fprintf(output_file, "\n");
+    fprintf(output_file, "Línea %d : %s\n", yylineno, str);}
