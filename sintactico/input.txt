@@ -1,4 +1,8 @@
 inicio
     int x;
-    x = 10;
+    x = 100.77;
+    while(x >= 20)
+    {
+        x=1;
+    }
 fin

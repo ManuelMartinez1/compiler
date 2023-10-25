@@ -9,6 +9,7 @@ extern int yylex(void);
 extern FILE* yyin;
 extern FILE *output_file;
 %}
+%option yylineno
 %%
 
 "inicio" { fprintf(output_file,"Token: INICIO, Valor: %s\n", yytext); return(INICIO); }
@@ -39,8 +40,29 @@ extern FILE *output_file;
 "while" { fprintf(output_file,"Token: WHILE, Valor: %s\n", yytext); return(WHILE); }
 "for" { fprintf(output_file,"Token: FOR, Valor: %s\n", yytext); return(FOR); }
 "do" { fprintf(output_file,"Token: DO, Valor: %s\n", yytext); return(DO); }
-[a-zA-Z_][a-zA-Z0-9_]* { fprintf(output_file,"Token: IDENTIFIER, Valor: %s\n", yytext); return(IDENTIFIER); }
-[0-9]+ { fprintf(output_file,"Token: NUM, Valor: %s\n", yytext); return(NUM); }
+[a-zA-Z_][a-zA-Z0-9_]* { 
+    if (strlen(yytext) > 32) {
+        yyerror("Caracter inválido");
+        exit(1);
+    } else {
+        fprintf(output_file,"Token: IDENTIFIER, Valor: %s\n", yytext); return(IDENTIFIER);
+    }
+}
+[0-9]+ { 
+    if(strlen(yytext)>5){
+        yyerror("NUM too long");
+        exit(1);
+    }else{
+        fprintf(output_file,"Token: NUM, Valor: %s\n", yytext); return(NUM); 
+    }
+    }
+[0-9]{1,5}\.[0-9]{1,5} { 
+        fprintf(output_file,"Token: NUMDEC, Valor: %s\n", yytext); return(NUMDEC); 
+    }
+[0-9]{1,5}\.[0-9]{6,100} {
+    yyerror("NUM DECIMAL too long");
+    exit(1);
+}
 [ \t\n] {;} // Ignorar espacios en blanco y saltos de línea
 . { ECHO; yyerror("Caracter inválido"); }
 %%

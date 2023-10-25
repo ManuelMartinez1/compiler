@@ -18,7 +18,7 @@
 %token INICIO FIN
 %token IF ELSE WHILE FOR DO
 %token INT FLOAT DOUBLE BOOL STRING
-%token IDENTIFIER NUM
+%token IDENTIFIER NUM NUMDEC
 
 %left XOR
 %left OR
@@ -89,6 +89,7 @@ expression: expression ADD expression
           | OP expression CP
           | IDENTIFIER
           | NUM
+          | NUMDEC
 ;
 
 %%
@@ -123,4 +124,4 @@ int main(int argc, char* argv[]) {
 }
 void yyerror(char *str) {
    fprintf(output_file, "\n");
-    fprintf(output_file, "Línea %d : %s\n", yylineno, str);}
+    fprintf(output_file, "ERROR en línea %d: %s\n", yylineno, str);}

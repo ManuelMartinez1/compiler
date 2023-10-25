@@ -216,6 +216,7 @@ typedef
 #define	STRING	285
 #define	IDENTIFIER	286
 #define	NUM	287
+#define	NUMDEC	288
 
 
 #line 169 "/usr/share/bison++/bison.h"
@@ -294,6 +295,7 @@ static const int BOOL;
 static const int STRING;
 static const int IDENTIFIER;
 static const int NUM;
+static const int NUMDEC;
 
 
 #line 212 "/usr/share/bison++/bison.h"
@@ -332,6 +334,7 @@ static const int NUM;
 	,STRING=285
 	,IDENTIFIER=286
 	,NUM=287
+	,NUMDEC=288
 
 
 #line 215 "/usr/share/bison++/bison.h"
