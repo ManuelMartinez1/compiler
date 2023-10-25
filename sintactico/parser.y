@@ -1,4 +1,5 @@
 %{
+    void yyerror(char *str);
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
@@ -8,9 +9,6 @@
 
     int yylex(void);
     extern FILE* yyin;
-    void yyerror(const char *s) {
-    fprintf(stderr, "Error en la línea %d: %s\n", yylineno, s);
-}
 %}
 
 %token ADD SUB MUL DIV
@@ -94,6 +92,7 @@ expression: expression ADD expression
 
 %%
 
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         printf("Uso: %s <archivo_de_entrada>\n", argv[0]);
@@ -115,3 +114,6 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+void yyerror(char *str) {
+    printf("\n");
+    printf("Línea %d : %s\n", yylineno, str);}
