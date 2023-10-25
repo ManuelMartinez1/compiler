@@ -1,0 +1,4 @@
+inicio
+    int x;
+    x = 10;
+fin
